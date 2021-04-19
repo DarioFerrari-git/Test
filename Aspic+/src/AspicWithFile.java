@@ -14,13 +14,13 @@ import org.tweetyproject.logics.pl.parser.PlParser;
 import org.tweetyproject.logics.pl.syntax.PlFormula;
 
 
-public class AspicExample2 {
+public class AspicWithFile {
 	public static void main(String[] args) throws FileNotFoundException, ParserException, IOException{
 		PlParser plparser = new PlParser();
 		AspicParser<PlFormula> parser = new AspicParser<>(plparser, new PlFormulaGenerator());
-		AspicArgumentationTheory<PlFormula> at = parser.parseBeliefBaseFromFile("ex3.aspic");		
+		AspicArgumentationTheory<PlFormula> at = parser.parseBeliefBaseFromFile("ex1.aspic");		
 		SimpleAspicReasoner<PlFormula> ar = new SimpleAspicReasoner<PlFormula>(AbstractExtensionReasoner.getSimpleReasonerForSemantics(Semantics.GROUNDED_SEMANTICS));
-		PlFormula pf = (PlFormula)plparser.parseFormula("u");		
+		PlFormula pf = (PlFormula)plparser.parseFormula("p");		
 		System.out.println(at);
 		System.out.println(pf + "\t" + ar.query(at,pf,InferenceMode.CREDULOUS));		
 	}

@@ -14,4 +14,36 @@
 	<natures>
 		<nature>org.eclipse.jdt.core.javanature</nature>
 	</natures>
+	<linkedResources>
+		<link>
+			<name>Toast-ex1.png</name>
+			<type>1</type>
+			<location>/Users/darioferrari/Desktop/Toast-ex1.png</location>
+		</link>
+		<link>
+			<name>Toast-ex2.png</name>
+			<type>1</type>
+			<location>/Users/darioferrari/Desktop/Toast-ex2.png</location>
+		</link>
+		<link>
+			<name>Toast-ex3.png</name>
+			<type>1</type>
+			<location>/Users/darioferrari/Desktop/Toast-ex3.png</location>
+		</link>
+		<link>
+			<name>ToastGraph1.png</name>
+			<type>1</type>
+			<location>/Users/darioferrari/Desktop/ToastGraph1.png</location>
+		</link>
+		<link>
+			<name>ToastGraph2.png</name>
+			<type>1</type>
+			<location>/Users/darioferrari/Desktop/ToastGraph2.png</location>
+		</link>
+		<link>
+			<name>ToastGraph3.png</name>
+			<type>1</type>
+			<location>/Users/darioferrari/Desktop/ToastGraph3.png</location>
+		</link>
+	</linkedResources>
 </projectDescription>

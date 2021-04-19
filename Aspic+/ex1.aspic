@@ -1,10 +1,10 @@
 d1: p => q
 d2: s => t
-d3: x => ! t
+d3: x -> ! t
 d4: u => v
-d5: v => ! t
-d6: s => ! p
-s1: p, q -> r
+d5: v -> ! t
+d6: s -> ! p
+s1: p, q => r
 s2: v -> ! s
 
 => p

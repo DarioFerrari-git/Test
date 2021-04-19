@@ -7,6 +7,7 @@ import org.tweetyproject.arg.aspic.ruleformulagenerator.PlFormulaGenerator;
 import org.tweetyproject.arg.aspic.syntax.AspicArgumentationTheory;
 import org.tweetyproject.arg.aspic.syntax.DefeasibleInferenceRule;
 import org.tweetyproject.arg.aspic.syntax.InferenceRule;
+import org.tweetyproject.arg.aspic.syntax.StrictInferenceRule;
 import org.tweetyproject.arg.aspic.util.RandomAspicArgumentationTheoryGenerator;
 import org.tweetyproject.arg.dung.reasoner.AbstractExtensionReasoner;
 import org.tweetyproject.arg.dung.reasoner.SimpleCompleteReasoner;
@@ -23,7 +24,7 @@ import org.tweetyproject.logics.pl.syntax.Proposition;
 import org.tweetyproject.logics.pl.syntax.PlFormula;
 
 
-public class AspicExample {
+public class Aspic {
 	public static void main(String[] args) throws ParserException, IOException{
 		Proposition a = new Proposition("a");
 		Proposition b = new Proposition("b");
@@ -45,16 +46,17 @@ public class AspicExample {
 		t.addRule(r1);
 		
 
+		StrictInferenceRule<PlFormula> r2 = new StrictInferenceRule<>();
 		
-		r1 = new DefeasibleInferenceRule<>();
-		r1.setConclusion(new Negation(d));
-		r1.addPremise(a);
-		t.addRule(r1);
+		r2 = new StrictInferenceRule<>();
+		r2.setConclusion(new Negation(d));
+		r2.addPremise(a);
+		t.addRule(r2);
 		
-		r1 = new DefeasibleInferenceRule<>();
-		r1.setConclusion(new Negation(e));
-		r1.addPremise(d);
-		t.addRule(r1);
+		r2 = new StrictInferenceRule<>();
+		r2.setConclusion(new Negation(e));
+		r2.addPremise(d);
+		t.addRule(r2);
 		
 		r1 = new DefeasibleInferenceRule<>();
 		r1.setConclusion(e);
@@ -68,18 +70,18 @@ public class AspicExample {
 	    t.addOrdinaryPremise(d);
 	    
 		
-	//	System.out.println(t);
+		System.out.println(t);
 		System.out.println();
+		System.out.println(pf + "\t" + ar.query(t,pf,InferenceMode.CREDULOUS));		
 		
-		
+		System.out.println();
 		
 		AbstractExtensionReasoner reasoner = new SimpleGroundedReasoner();
 		
 		DungTheory aaf = t.asDungTheory();
 		System.out.println(reasoner.getModels(aaf));
-		
-		
-	/*	
+		System.out.println();
+
 		for(Argument arg: aaf)
 			System.out.println(arg);
 		
@@ -88,11 +90,8 @@ public class AspicExample {
 		for(Attack att: aaf.getAttacks())
 			System.out.println(att);	
 		
+		System.out.println();
 		
-		
-		System.out.println(pf + "\t" + ar.query(t,pf,InferenceMode.CREDULOUS));		
-		*/
-	/*	
 		RandomAspicArgumentationTheoryGenerator gen = new RandomAspicArgumentationTheoryGenerator(10,30,2,0.3);
 	    Proposition p=new Proposition("A0");
 		AspicArgumentationTheory<PlFormula> t2= gen.next();
@@ -100,6 +99,6 @@ public class AspicExample {
 	    
 	    SimpleAspicReasoner<PlFormula> r9=new SimpleAspicReasoner<>(new SimpleGroundedReasoner());
 	    System.out.println(p+"\t"+r9.query(t2, p, InferenceMode.CREDULOUS));
-	 */   
+	   
 	}
 }
