@@ -26,21 +26,19 @@ public class AspicExampleFol2 {
 	public static void main(String[] args) throws ParserException, IOException {
 		// FOL Example
 		FolParser folparser = new FolParser();
-		FolSignature sig = folparser.parseSignature("Person = {dario,guido,giuseppe,mario}\n" + 
-				"type(snores(Person))\n" + 				
-                "type(bravo(Person))\n" +
-                "type(scansafatiche(Person))\n" +			
-				"type(professor(Person))\n" + 
-				"type(accessDenied(Person))\n" + 
-				"type(accessAllowed(Person))\n" + 
-				"type(misbehaves(Person))");
+		FolSignature sig = folparser.parseSignature("Person = {bob,alice}\n" + 
+				"type(borninscottland(Person))\n" + 				
+                "type(likesWhisky(Person))\n" +
+                "type(donotlikesWhisky(Person))\n" +			
+				"type(fitnesslover(Person))\n" + 
+				"type(scottish(Person))\n" );
 		folparser.setSignature(sig);
 		AspicParser<FolFormula> parser2 = new AspicParser<FolFormula>(folparser, new FolFormulaGenerator());
 		parser2.setSymbolComma(";");
 		
 		AspicArgumentationTheory<FolFormula> at = parser2.parseBeliefBaseFromFile("ex5_fol2.aspic");		
-		SimpleAspicReasoner<FolFormula> ar = new SimpleAspicReasoner<FolFormula>(AbstractExtensionReasoner.getSimpleReasonerForSemantics(Semantics.CONFLICTFREE_SEMANTICS));
-		FolFormula pf = (FolFormula)folparser.parseFormula("accessAllowed(mario)");	
+		SimpleAspicReasoner<FolFormula> ar = new SimpleAspicReasoner<FolFormula>(AbstractExtensionReasoner.getSimpleReasonerForSemantics(Semantics.GROUNDED_SEMANTICS));
+		FolFormula pf = (FolFormula)folparser.parseFormula("likesWhisky(alice)");	
 		
 		System.out.println(at.asDungTheory());
 		System.out.println();

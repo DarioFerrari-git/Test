@@ -1,16 +1,11 @@
-=> bravo(dario)
-=> snores(giuseppe)
-=> scansafatiche(guido)
-=> professor(mario)
+=>borninscottland(bob)
+=>borninscottland(alice)
+=>fitnesslover(alice)
 
-d0: accessDenied(X) => !accessAllowed(X)
+d0: donotlikesWhisky(X) => !likesWhisky(X)
 
-d1: snores(X) => misbehaves(X)
-d2: misbehaves(X) => accessDenied(X)
-d3: scansafatiche(X) => accessDenied(X)
-d4: professor(X) => accessAllowed(X)
-d5: bravo(X) => !misbehaves(X)
-d6: !misbehaves(X) => accessAllowed(X)
+d1: borninscottland(X) => scottish(X)
+d2: scottish(X) => likesWhisky(X)
+d3: fitnesslover(X) => donotlikesWhisky(X)
 
-d1 < d2 < d3 < d5 < d6 < d4
-
+d1 < d2 < d3

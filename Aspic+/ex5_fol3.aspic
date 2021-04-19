@@ -1,0 +1,12 @@
+=> WearsRing(bob)
+=> WearsRing(alice)
+=> PartyAnimal(alice)
+
+d1: WearsRing(X) => Married(X)
+d2: Married(X) => !Bachelor(X)
+d3: PartyAnimal(X) => Bachelor(X)
+d4: Bachelor(X) => !Married(X)
+
+
+
+
