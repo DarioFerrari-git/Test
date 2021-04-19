@@ -1,0 +1,16 @@
+=> bravo(dario)
+=> snores(giuseppe)
+=> scansafatiche(guido)
+=> professor(mario)
+
+d0: accessDenied(X) => !accessAllowed(X)
+
+d1: snores(X) => misbehaves(X)
+d2: misbehaves(X) => accessDenied(X)
+d3: scansafatiche(X) => accessDenied(X)
+d4: professor(X) => accessAllowed(X)
+d5: bravo(X) => !misbehaves(X)
+d6: !misbehaves(X) => accessAllowed(X)
+
+d1 < d2 < d3 < d5 < d6 < d4
+
