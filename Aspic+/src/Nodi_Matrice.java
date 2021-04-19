@@ -5,7 +5,7 @@ import org.tweetyproject.graphs.SimpleNode;
 import org.tweetyproject.graphs.util.GraphUtil;
 import org.tweetyproject.math.ComplexNumber;
 
-public class bho {
+public class Nodi_Matrice {
 	public static void main(String[] args){
 		Graph<SimpleNode> graph = new DefaultGraph<SimpleNode>();
 		
