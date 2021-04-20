@@ -1,0 +1,16 @@
+=> infoionP
+=> healthinfo
+=> Pdonotwanttopublish
+=> Pcabinetminister
+=> iaffectPfunction
+d0: nopublication => !publication
+
+d1: infoionP;healthinfo =>privateinfo 
+d2: privateinfo;Pdonotwanttopublish=> nopublication
+d3: Pcabinetminister;iaffectPfunction=>ihaspublicsignificant
+d4: ihaspublicsignificant=>publication
+
+
+
+
+

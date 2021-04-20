@@ -17,22 +17,27 @@ import org.tweetyproject.logics.fol.syntax.FolFormula;
 import org.tweetyproject.logics.fol.syntax.FolSignature;
 
 
-public class AspicExampleFol3 {
+public class AspicExampleFol4 {
 	public static void main(String[] args) throws ParserException, IOException {
 		// FOL Example
 		FolParser folparser = new FolParser();
-		FolSignature sig = folparser.parseSignature("Person = {bob,alice}\n" + 
-				"type(WearsRing(Person))\n" + 				
-                "type(PartyAnimal(Person))\n" +
-                "type(Married(Person))\n" +			
-				"type(Bachelor(Person))\n");
+		FolSignature sig = folparser.parseSignature(
+				"type(infoionP)\n" + 				
+                "type(healthinfo)\n" +
+                "type(Pdonotwanttopublish)\n" +	
+                "type(iaffectPfunction)\n" +
+                "type(nopublication)\n" +
+                "type(publication)\n" +
+                "type(privateinfo)\n" +
+                "type(ihaspublicsignificant)\n" +
+				"type(Pcabinetminister)\n");
 		folparser.setSignature(sig);
 		AspicParser<FolFormula> parser2 = new AspicParser<FolFormula>(folparser, new FolFormulaGenerator());
 		parser2.setSymbolComma(";");
 		
-		AspicArgumentationTheory<FolFormula> at = parser2.parseBeliefBaseFromFile("ex5_fol3.aspic");		
+		AspicArgumentationTheory<FolFormula> at = parser2.parseBeliefBaseFromFile("ex5_fol4.aspic");		
 		SimpleAspicReasoner<FolFormula> ar = new SimpleAspicReasoner<FolFormula>(AbstractExtensionReasoner.getSimpleReasonerForSemantics(Semantics.GROUNDED_SEMANTICS));
-		FolFormula pf = (FolFormula)folparser.parseFormula("Bachelor(bob)");	
+		FolFormula pf = (FolFormula)folparser.parseFormula("nopublication");	
 		
 		System.out.println(at.asDungTheory());
 		System.out.println();

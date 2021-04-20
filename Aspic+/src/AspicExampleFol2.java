@@ -16,12 +16,7 @@ import org.tweetyproject.logics.fol.parser.FolParser;
 import org.tweetyproject.logics.fol.syntax.FolFormula;
 import org.tweetyproject.logics.fol.syntax.FolSignature;
 
-/**
- * Example code for using ASPIC with first-order-logic formulas.
- * 
- * @author Anna Gessler
- *
- */
+
 public class AspicExampleFol2 {
 	public static void main(String[] args) throws ParserException, IOException {
 		// FOL Example

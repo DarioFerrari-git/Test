@@ -23,28 +23,19 @@ import org.tweetyproject.logics.pl.syntax.Proposition;
 import org.tweetyproject.logics.pl.syntax.PlFormula;
 
 
-public class AspicExample {
+public class AspicExample2 {
 	public static void main(String[] args) throws ParserException, IOException{
-		Proposition a = new Proposition("artillery");
-		Proposition b = new Proposition("noevidence");
-		Proposition c = new Proposition("technique");
-		Proposition d = new Proposition("doctrine");
-		Proposition e = new Proposition("aid");
-		Proposition f = new Proposition("oil");
-		Proposition g = new Proposition("humanitarian");
-		Proposition h = new Proposition("strategic");
-		Proposition i = new Proposition("casualties");
+		Proposition a = new Proposition("a");
+		Proposition b = new Proposition("b");
+		Proposition c = new Proposition("c");
 		
 		PlParser plparser = new PlParser();
 		AspicArgumentationTheory<PlFormula> t = new AspicArgumentationTheory<>(new PlFormulaGenerator());
 		t.setRuleFormulaGenerator(new PlFormulaGenerator());
-		SimpleAspicReasoner<PlFormula> ar = new SimpleAspicReasoner<PlFormula>(AbstractExtensionReasoner.getSimpleReasonerForSemantics(Semantics.GROUNDED_SEMANTICS));
-		PlFormula pf = (PlFormula)plparser.parseFormula("oil");		
+		SimpleAspicReasoner<PlFormula> ar = new SimpleAspicReasoner<PlFormula>(AbstractExtensionReasoner.getSimpleReasonerForSemantics(Semantics.GR));
+		PlFormula pf = (PlFormula)plparser.parseFormula("c");		
 		
-		t.addAxiom(a);
-		t.addAxiom(d);
-		t.addAxiom(e);
-		t.addAxiom(f);
+		t.addOrdinaryPremise(a);
 		t.addOrdinaryPremise(b);
 		t.addOrdinaryPremise(c);
 		
@@ -56,45 +47,14 @@ public class AspicExample {
 		t.addRule(r2);
 		
 		r2 = new StrictInferenceRule<>();
+		r2.setConclusion(new Negation(a));
+		r2.addPremise(b);
+		t.addRule(r2);
+		
+		r2 = new StrictInferenceRule<>();
 		r2.setConclusion(new Negation(c));
 		r2.addPremise(b);
 		t.addRule(r2);
-		
-		r1 = new DefeasibleInferenceRule<>();
-		r1.setConclusion(i);
-		r1.addPremise(d);
-		r1.addPremise(c);
-		t.addRule(r1);
-        
-		r2 = new StrictInferenceRule<>();
-		r2.setConclusion(new Negation(i));
-		r2.addPremise(b);
-		t.addRule(r2);
-		
-		r2 = new StrictInferenceRule<>();
-		r2.setConclusion(new Negation(g));
-		r2.addPremise(i);
-		t.addRule(r2);
-		
-		r2 = new StrictInferenceRule<>();
-		r2.setConclusion(new Negation(h));
-		r2.addPremise(g);
-		t.addRule(r2);
-		
-		r2 = new StrictInferenceRule<>();
-		r2.setConclusion(new Negation(g));
-		r2.addPremise(h);
-		t.addRule(r2);
-		
-		r1 = new DefeasibleInferenceRule<>();
-		r1.setConclusion(g);
-		r1.addPremise(e);
-		t.addRule(r1);
-		
-		r1 = new DefeasibleInferenceRule<>();
-		r1.setConclusion(h);
-		r1.addPremise(f);
-		t.addRule(r1);		
 		
 		System.out.println(pf + "\t" + ar.query(t,pf,InferenceMode.CREDULOUS));		
 		System.out.println(t);
