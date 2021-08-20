@@ -22,7 +22,7 @@ import org.tweetyproject.logics.pl.parser.PlParser;
 import org.tweetyproject.logics.pl.syntax.Negation;
 import org.tweetyproject.logics.pl.syntax.Proposition;
 import org.tweetyproject.logics.pl.syntax.PlFormula;
-
+//
 
 public class Aspic {
 	public static void main(String[] args) throws ParserException, IOException{
